@@ -46,10 +46,11 @@ public class EnvironmentOrPropertyDriverTest {
      *
      * @throws Exception when a serious error occurs.
      */
-    @Ignore
     @Test
     public void testConnect() throws Exception {
+        System.getProperties().put("envOrProp.0.url", "jdbc:h2:mem:test");
         Connection connection = DriverManager.getConnection("jdbc:envOrProp:0");
+        System.getProperties().remove("envOrProp.0.url");
         assertNotNull(connection);
     }
 

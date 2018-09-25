@@ -44,12 +44,8 @@ import java.util.logging.Logger;
  * </p>
  * <pre>
  *    envOrProp.0.url=
- *    envOrProp.0.property.0.name=
- *    envOrProp.0.property.0.value=
- *    envOrProp.0.property.1.name=
- *    envOrProp.0.property.1.value=
- *    envOrProp.0.property.2.name=
- *    envOrProp.0.property.2.value=
+ *    envOrProp.0.property.1=name=value
+ *    envOrProp.0.property.2=name2=value2
  * </pre>
  *
  * @author Manfred Riem (mriem@manorrock.com)
@@ -71,10 +67,21 @@ public class EnvironmentOrPropertyDriver implements Driver {
      * @see Driver#connect(java.lang.String, java.util.Properties)
      */
     public Connection connect(String url, Properties info) throws SQLException {
+        String name = url.substring("jdbc:envOrProp:".length());
         String delegateUrl = null;
-        Properties delegateInfo = null;
+        Properties delegateProperties = new Properties();
+        for(String key : System.getenv().keySet()) {
+            if (key.startsWith("envOrProp." + name + ".url")) {
+                delegateUrl = System.getenv("envOrProp." + name + ".url");
+            }
+        }
+        for(String key : System.getProperties().stringPropertyNames()) {
+            if (key.startsWith("envOrProp." + name + ".url")) {
+                delegateUrl = System.getProperty("envOrProp." + name + ".url");
+            }
+        }
         Driver driver = DriverManager.getDriver(delegateUrl);
-        return driver.connect(delegateUrl, delegateInfo);
+        return driver.connect(delegateUrl, delegateProperties);
     }
 
     /**
