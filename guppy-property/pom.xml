@@ -9,9 +9,9 @@
         <artifactId>project</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>guppy</artifactId>
+    <artifactId>guppy-property</artifactId>
     <packaging>jar</packaging>
-    <name>Manorrock Guppy</name>
+    <name>Manorrock Guppy Property Driver</name>
     <dependencies>
         <dependency>
             <groupId>javax</groupId>

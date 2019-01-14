@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2002-2018, Manorrock.com. All Rights Reserved.
+ *  Copyright (c) 2002-2019, Manorrock.com. All Rights Reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are met:
@@ -35,11 +35,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * The JUnit tests for the EnvironmentOrPropertyDriver class.
+ * The JUnit tests for the PropertyDriver class.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class EnvironmentOrPropertyDriverTest {
+public class PropertyDriverTest {
 
     /**
      * Test connect method.
@@ -48,9 +48,9 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testConnect() throws Exception {
-        System.getProperties().put("envOrProp.0.url", "jdbc:h2:mem:test");
-        Connection connection = DriverManager.getConnection("jdbc:envOrProp:0");
-        System.getProperties().remove("envOrProp.0.url");
+        System.getProperties().put("property.0.url", "jdbc:h2:mem:test");
+        Connection connection = DriverManager.getConnection("jdbc:property:0");
+        System.getProperties().remove("property.0.url");
         assertNotNull(connection);
     }
 
@@ -61,7 +61,7 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testAcceptsURL() throws Exception {
-        assertNotNull(DriverManager.getDriver("jdbc:envOrProp:0"));
+        assertNotNull(DriverManager.getDriver("jdbc:property:0"));
     }
 
     /**
@@ -69,10 +69,10 @@ public class EnvironmentOrPropertyDriverTest {
      *
      * @throws Exception when a serious error occurs.
      */
-    @Ignore
     @Test
+    @Ignore
     public void testGetPropertyInfo() throws Exception {
-        assertNotNull(DriverManager.getDriver("jdbc:envOrProp:0").getPropertyInfo("jdbc:envOrProp:0", new Properties()));
+        assertNotNull(DriverManager.getDriver("jdbc:property:0").getPropertyInfo("jdbc:property:0", new Properties()));
     }
 
     /**
@@ -82,7 +82,7 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testGetMajorVersion() throws Exception {
-        assertEquals(1, DriverManager.getDriver("jdbc:envOrProp:0").getMajorVersion());
+        assertEquals(1, DriverManager.getDriver("jdbc:property:0").getMajorVersion());
     }
 
     /**
@@ -92,7 +92,7 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testGetMinorVersion() throws Exception {
-        assertEquals(0, DriverManager.getDriver("jdbc:envOrProp:0").getMinorVersion());
+        assertEquals(0, DriverManager.getDriver("jdbc:property:0").getMinorVersion());
     }
 
     /**
@@ -102,7 +102,7 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testJdbcCompliant() throws Exception {
-        assertTrue(DriverManager.getDriver("jdbc:envOrProp:0").jdbcCompliant());
+        assertTrue(DriverManager.getDriver("jdbc:property:0").jdbcCompliant());
     }
 
     /**
@@ -112,6 +112,6 @@ public class EnvironmentOrPropertyDriverTest {
      */
     @Test
     public void testGetParentLogger() throws Exception {
-        assertNotNull(DriverManager.getDriver("jdbc:envOrProp:0").getParentLogger());
+        assertNotNull(DriverManager.getDriver("jdbc:property:0").getParentLogger());
     }
 }

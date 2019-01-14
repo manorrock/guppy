@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2002-2018, Manorrock.com. All Rights Reserved.
+ *  Copyright (c) 2002-2019, Manorrock.com. All Rights Reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are met:
@@ -23,7 +23,7 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.guppy;
+package com.manorrock.guppy.property;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -35,27 +35,27 @@ import java.util.Properties;
 import java.util.logging.Logger;
 
 /**
- * A JDBC driver that looks for environment variables or system properties to
- * delegate to a another JDBC driver.
+ * A JDBC driver that looks for system properties to delegate to a another JDBC
+ * driver.
  *
  * <p>
- * E.g. if you set the JDBC url in your application to be jdbc:envOrProp:0 it
- * will look for environment variables / system properties of the format:
+ * E.g. if you set the JDBC url in your application to be jdbc:property:0 it
+ * will look for system properties of the format:
  * </p>
  * <pre>
- *    envOrProp.0.url=
- *    envOrProp.0.property.1=name=value
- *    envOrProp.0.property.2=name2=value2
+ *    property.0.url=
+ *    property.0.property.1=name=value
+ *    property.0.property.2=name2=value2
  * </pre>
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class EnvironmentOrPropertyDriver implements Driver {
+public class PropertyDriver implements Driver {
 
     /**
      * Constructor.
      */
-    public EnvironmentOrPropertyDriver() {
+    public PropertyDriver() {
         try {
             DriverManager.registerDriver(this);
         } catch (SQLException se) {
@@ -67,17 +67,12 @@ public class EnvironmentOrPropertyDriver implements Driver {
      * @see Driver#connect(java.lang.String, java.util.Properties)
      */
     public Connection connect(String url, Properties info) throws SQLException {
-        String name = url.substring("jdbc:envOrProp:".length());
+        String name = url.substring("jdbc:property:".length());
         String delegateUrl = null;
         Properties delegateProperties = new Properties();
-        for(String key : System.getenv().keySet()) {
-            if (key.startsWith("envOrProp." + name + ".url")) {
-                delegateUrl = System.getenv("envOrProp." + name + ".url");
-            }
-        }
-        for(String key : System.getProperties().stringPropertyNames()) {
-            if (key.startsWith("envOrProp." + name + ".url")) {
-                delegateUrl = System.getProperty("envOrProp." + name + ".url");
+        for (String key : System.getProperties().stringPropertyNames()) {
+            if (key.startsWith("property." + name + ".url")) {
+                delegateUrl = System.getProperty("property." + name + ".url");
             }
         }
         Driver driver = DriverManager.getDriver(delegateUrl);
@@ -88,7 +83,7 @@ public class EnvironmentOrPropertyDriver implements Driver {
      * @see Driver#acceptsURL(java.lang.String)
      */
     public boolean acceptsURL(String url) throws SQLException {
-        return url != null && url.contains("jdbc:envOrProp:");
+        return url != null && url.contains("jdbc:property:");
     }
 
     /**
@@ -132,6 +127,6 @@ public class EnvironmentOrPropertyDriver implements Driver {
      * @see Driver#getParentLogger()
      */
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return Logger.getLogger(EnvironmentOrPropertyDriver.class.getName());
+        return Logger.getLogger(PropertyDriver.class.getName());
     }
 }
