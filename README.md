@@ -3,10 +3,6 @@
 
 The Manorrock Guppy Project delivers you with a collection of JDBC drivers.
 
-See the list below for what is available.
-
-1. [Guppy JDBC drivers](guppy/README.md)
-
 Note the documentation for the master branch might show features that are NOT 
 yet available as it is under active development. Please see the documentation
 for the release you are using in the links below.
