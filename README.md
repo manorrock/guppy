@@ -10,6 +10,7 @@ for the release you are using in the links below.
 ## See our list of JDBC drivers below
 
 1. [Manorrock Guppy Environment Driver](guppy-environment/README.md)
+1. [Manorrock Guppy Property Driver](guppy-property/README.md)
 
 ## Documentation for older releases
 

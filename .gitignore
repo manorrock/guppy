@@ -1,4 +1,2 @@
-/guppy-environment/target/
-/guppy/nbproject/
-/guppy/target/
-/guppy-property/target/
+nb-configuration.xml
+target/
