@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.manorrock.guppy</groupId>
         <artifactId>project</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>20.3.0-SNAPSHOT</version>
     </parent>
     <artifactId>guppy-property</artifactId>
     <packaging>jar</packaging>
