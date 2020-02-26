@@ -14,6 +14,7 @@ for the release you are using in the links below.
 
 ## Documentation for older releases
 
+1. [Version 20.2.0](https://github.com/manorrock/guppy/tree/v20.2.0)
 1. [Version 0.2.0](https://github.com/manorrock/guppy/tree/v0.2.0)
 2. [Version 0.1.0](https://github.com/manorrock/guppy/tree/v0.1.0), first release
 
