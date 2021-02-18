@@ -11,7 +11,7 @@
     </parent>
     <artifactId>guppy-environment</artifactId>
     <packaging>jar</packaging>
-    <name>Manorrock Guppy Environment Driver</name>
+    <name>Manorrock Guppy - Environment Driver</name>
     <build>
         <plugins>
             <plugin>

@@ -1,6 +1,7 @@
 # Guppy Environment driver
 
-A JDBC driver that looks for system properties to delegate to a another JDBC driver.
+A JDBC driver that looks for system properties to delegate to a another JDBC
+driver.
 
 E.g. if you set the JDBC url in your application to be jdbc:property:0 it will 
 look for system properties of the format:
