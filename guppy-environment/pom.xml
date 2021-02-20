@@ -22,6 +22,9 @@
                     <environmentVariables>
                         <GUPPY_ENVIRONMENT.0.URL>jdbc:h2:mem:test</GUPPY_ENVIRONMENT.0.URL>
                     </environmentVariables>
+                    <excludedEnvironmentVariables>
+                        <excludedEnvironmentVariable>GUPPY_ENVIRONMENT.0.URL</excludedEnvironmentVariable>
+                    </excludedEnvironmentVariables>
                 </configuration>
             </plugin>
         </plugins>
