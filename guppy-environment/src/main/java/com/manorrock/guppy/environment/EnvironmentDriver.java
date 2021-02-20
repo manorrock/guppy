@@ -32,6 +32,7 @@ import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
+import static java.util.logging.Level.INFO;
 import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
 
@@ -88,7 +89,9 @@ public class EnvironmentDriver implements Driver {
      * @return the delegate name.
      */
     private String getDelegateName(String url) {
-        return url.substring("jdbc:environment:".length());
+        String delegateName = url.substring("jdbc:environment:".length());
+        LOGGER.log(INFO, "Delegate name: {0}", delegateName);
+        return delegateName;
     }
     
     /**
@@ -98,7 +101,9 @@ public class EnvironmentDriver implements Driver {
      */
     private String getDelegateUrl(String url) {
         String delegateName = getDelegateName(url);
-        return System.getenv("GUPPY_ENVIRONMENT." + delegateName + ".URL");
+        String delegateUrl = System.getenv("GUPPY_ENVIRONMENT." + delegateName + ".URL");
+        LOGGER.log(INFO, "Delegate URL: {0}", delegateUrl);
+        return delegateUrl;
     }
 
     @Override
