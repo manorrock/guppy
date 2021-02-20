@@ -63,70 +63,69 @@ public class PropertyDriver implements Driver {
         }
     }
 
-    /**
-     * @see Driver#connect(java.lang.String, java.util.Properties)
-     */
+    @Override
     public Connection connect(String url, Properties info) throws SQLException {
         String name = url.substring("jdbc:property:".length());
         String delegateUrl = null;
         Properties delegateProperties = new Properties();
         for (String key : System.getProperties().stringPropertyNames()) {
-            if (key.startsWith("property." + name + ".url")) {
-                delegateUrl = System.getProperty("property." + name + ".url");
+            if (key.startsWith("guppy.property." + name + ".url")) {
+                delegateUrl = System.getProperty("guppy.property." + name + ".url");
             }
         }
         Driver driver = DriverManager.getDriver(delegateUrl);
         return driver.connect(delegateUrl, delegateProperties);
     }
 
-    /**
-     * @see Driver#acceptsURL(java.lang.String)
-     */
+    @Override
     public boolean acceptsURL(String url) throws SQLException {
         return url != null && url.contains("jdbc:property:");
     }
 
     /**
-     * @see Driver#getPropertyInfo(java.lang.String, java.util.Properties)
+     * Get the delegate name.
+     * 
+     * @return the delegate name.
      */
+    private String getDelegateName(String url) {
+        return url.substring("jdbc:property:".length());
+    }
+    
+    /**
+     * Get the delegate URL.
+     * 
+     * @return the delegate URL.
+     */
+    private String getDelegateUrl(String url) {
+        String delegateName = getDelegateName(url);
+        return System.getProperty("guppy.property." + delegateName + ".url");
+    }
+    
+    @Override
     public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-        String delegateUrl = null;
-        Properties delegateInfo = null;
-        Driver driver = DriverManager.getDriver(delegateUrl);
-        return driver.getPropertyInfo(delegateUrl, delegateInfo);
+        String delegateUrl = getDelegateUrl(url);
+        Properties delegateInfo = new Properties();
+        Driver delegateDriver = DriverManager.getDriver(delegateUrl);
+        return delegateDriver.getPropertyInfo(delegateUrl, delegateInfo);
     }
 
-    /**
-     * Get the major version.
-     *
-     * @return 1.
-     */
+    @Override
     public int getMajorVersion() {
         return 1;
     }
 
-    /**
-     * Get the minor version.
-     *
-     * @return 0.
-     */
+    @Override
     public int getMinorVersion() {
         return 0;
     }
 
-    /**
-     * Are we JDBC compliant.
-     *
-     * @return true.
-     */
+    @Override
     public boolean jdbcCompliant() {
         return true;
     }
 
-    /**
-     * @see Driver#getParentLogger()
-     */
+    @Override
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return Logger.getLogger(PropertyDriver.class.getName());
+        return Logger.getLogger(PropertyDriver.class.getPackage().getName());
     }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2002-2020, Manorrock.com. All Rights Reserved.
+ *  Copyright (c) 2002-2021, Manorrock.com. All Rights Reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are met:
@@ -31,7 +31,6 @@ import java.util.Properties;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -48,9 +47,9 @@ public class PropertyDriverTest {
      */
     @Test
     public void testConnect() throws Exception {
-        System.getProperties().put("property.0.url", "jdbc:h2:mem:test");
+        System.getProperties().put("guppy.property.0.url", "jdbc:h2:mem:test");
         Connection connection = DriverManager.getConnection("jdbc:property:0");
-        System.getProperties().remove("property.0.url");
+        System.getProperties().remove("guppy.property.0.url");
         assertNotNull(connection);
     }
 
@@ -70,9 +69,10 @@ public class PropertyDriverTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    @Ignore
     public void testGetPropertyInfo() throws Exception {
+        System.getProperties().put("guppy.property.0.url", "jdbc:h2:mem:test");
         assertNotNull(DriverManager.getDriver("jdbc:property:0").getPropertyInfo("jdbc:property:0", new Properties()));
+        System.getProperties().remove("guppy.property.0.url");
     }
 
     /**
