@@ -41,13 +41,6 @@ import org.junit.Test;
 public class EnvironmentDriverTest {
     
     /**
-     * Before class.
-     */
-    public static void beforeClass() {
-        System.getProperties().put("jdbc.drivers", "com.manorrock.guppy.environment.EnvironmentDriver");
-    }
-
-    /**
      * Test connect method.
      *
      * @throws Exception when a serious error occurs.

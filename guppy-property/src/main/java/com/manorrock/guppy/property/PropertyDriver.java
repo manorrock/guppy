@@ -32,6 +32,7 @@ import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
+import static java.util.logging.Level.FINE;
 import java.util.logging.Logger;
 
 /**
@@ -53,6 +54,11 @@ import java.util.logging.Logger;
 public class PropertyDriver implements Driver {
 
     /**
+     * Stores the logger.
+     */
+    private static final Logger LOGGER = Logger.getLogger(PropertyDriver.class.getPackage().getName());
+
+    /**
      * Constructor.
      */
     public PropertyDriver() {
@@ -65,16 +71,9 @@ public class PropertyDriver implements Driver {
 
     @Override
     public Connection connect(String url, Properties info) throws SQLException {
-        String name = url.substring("jdbc:property:".length());
-        String delegateUrl = null;
-        Properties delegateProperties = new Properties();
-        for (String key : System.getProperties().stringPropertyNames()) {
-            if (key.startsWith("guppy.property." + name + ".url")) {
-                delegateUrl = System.getProperty("guppy.property." + name + ".url");
-            }
-        }
+        String delegateUrl = getDelegateUrl(url);
         Driver driver = DriverManager.getDriver(delegateUrl);
-        return driver.connect(delegateUrl, delegateProperties);
+        return driver.connect(delegateUrl, new Properties());
     }
 
     @Override
@@ -84,23 +83,27 @@ public class PropertyDriver implements Driver {
 
     /**
      * Get the delegate name.
-     * 
+     *
      * @return the delegate name.
      */
     private String getDelegateName(String url) {
-        return url.substring("jdbc:property:".length());
+        String delegateName = url.substring("jdbc:property:".length());
+        LOGGER.log(FINE, "Delegate name: {0}", delegateName);
+        return delegateName;
     }
-    
+
     /**
      * Get the delegate URL.
-     * 
+     *
      * @return the delegate URL.
      */
     private String getDelegateUrl(String url) {
         String delegateName = getDelegateName(url);
-        return System.getProperty("guppy.property." + delegateName + ".url");
+        String delegateUrl = System.getProperty("guppy.property." + delegateName + ".url");
+        LOGGER.log(FINE, "Delegate URL: {0}", delegateUrl);
+        return delegateUrl; 
     }
-    
+
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
         String delegateUrl = getDelegateUrl(url);

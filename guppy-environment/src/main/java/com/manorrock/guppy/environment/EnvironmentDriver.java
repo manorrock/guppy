@@ -32,7 +32,7 @@ import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
-import static java.util.logging.Level.INFO;
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
 
@@ -53,7 +53,7 @@ import java.util.logging.Logger;
  * @author Manfred Riem (mriem@manorrock.com)
  */
 public class EnvironmentDriver implements Driver {
-    
+
     /**
      * Stores the logger.
      */
@@ -82,27 +82,27 @@ public class EnvironmentDriver implements Driver {
     public boolean acceptsURL(String url) throws SQLException {
         return url != null && url.contains("jdbc:environment:");
     }
-    
+
     /**
      * Get the delegate name.
-     * 
+     *
      * @return the delegate name.
      */
     private String getDelegateName(String url) {
         String delegateName = url.substring("jdbc:environment:".length());
-        LOGGER.log(INFO, "Delegate name: {0}", delegateName);
+        LOGGER.log(FINE, "Delegate name: {0}", delegateName);
         return delegateName;
     }
-    
+
     /**
      * Get the delegate URL.
-     * 
+     *
      * @return the delegate URL.
      */
     private String getDelegateUrl(String url) {
         String delegateName = getDelegateName(url);
         String delegateUrl = System.getenv("GUPPY_ENVIRONMENT." + delegateName + ".URL");
-        LOGGER.log(INFO, "Delegate URL: {0}", delegateUrl);
+        LOGGER.log(FINE, "Delegate URL: {0}", delegateUrl);
         return delegateUrl;
     }
 
