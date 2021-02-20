@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2002-2020, Manorrock.com. All Rights Reserved.
+ *  Copyright (c) 2002-2021, Manorrock.com. All Rights Reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
  *  modification, are permitted provided that the following conditions are met:
@@ -31,11 +31,10 @@ import java.util.Properties;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * The JUnit tests for the EnvironmentOrPropertyDriver class.
+ * The JUnit tests for the EnvironmentDriver class.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
@@ -48,7 +47,6 @@ public class EnvironmentDriverTest {
      */
     @Test
     public void testConnect() throws Exception {
-//        System.getenv().put("GUPPY_ENVIRONMENT.0.URL", "jdbc:h2:mem:test");
         Connection connection = DriverManager.getConnection("jdbc:environment:0");
         assertNotNull(connection);
     }
@@ -68,7 +66,6 @@ public class EnvironmentDriverTest {
      *
      * @throws Exception when a serious error occurs.
      */
-    @Ignore
     @Test
     public void testGetPropertyInfo() throws Exception {
         assertNotNull(DriverManager.getDriver("jdbc:environment:0").
