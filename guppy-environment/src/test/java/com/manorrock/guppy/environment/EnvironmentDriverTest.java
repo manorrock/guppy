@@ -39,6 +39,13 @@ import org.junit.Test;
  * @author Manfred Riem (mriem@manorrock.com)
  */
 public class EnvironmentDriverTest {
+    
+    /**
+     * Before class.
+     */
+    public static void beforeClass() {
+        System.getProperties().put("jdbc.drivers", "com.manorrock.guppy.environment.EnvironmentDriver");
+    }
 
     /**
      * Test connect method.
