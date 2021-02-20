@@ -19,7 +19,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
-                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                     <environmentVariables>
                         <GUPPY_ENVIRONMENT.0.URL>jdbc:h2:mem:test</GUPPY_ENVIRONMENT.0.URL>
                     </environmentVariables>
