@@ -28,12 +28,9 @@ package com.manorrock.guppy.environment;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -42,18 +39,6 @@ import org.junit.Test;
  * @author Manfred Riem (mriem@manorrock.com)
  */
 public class EnvironmentDriverTest {
-    
-    /**
-     * Before class.
-     */
-    @BeforeClass
-    public static void initDriver() {
-        try {
-            Class.forName("com.manorrock.guppy.environment.EnvironmentDriver");
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     /**
      * Test connect method.
