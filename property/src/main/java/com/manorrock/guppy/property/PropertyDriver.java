@@ -44,9 +44,9 @@ import java.util.logging.Logger;
  * will look for system properties of the format:
  * </p>
  * <pre>
- *    property.0.url=
- *    property.0.property.1=name=value
- *    property.0.property.2=name2=value2
+ *    guppy.property.0.url=
+ *    guppy.property.0.property.1=name=value
+ *    guppy.property.0.property.2=name2=value2
  * </pre>
  *
  * @author Manfred Riem (mriem@manorrock.com)
