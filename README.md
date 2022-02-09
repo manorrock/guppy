@@ -1,5 +1,6 @@
-
 # Manorrock Guppy Project
+
+[![build](https://github.com/manorrock/guppy/actions/workflows/build.yml/badge.svg)](https://github.com/manorrock/guppy/actions/workflows/build.yml)
 
 The Manorrock Guppy Project delivers you with a collection of JDBC drivers.
 
