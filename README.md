@@ -6,8 +6,8 @@ The Manorrock Guppy Project delivers you with a collection of JDBC drivers.
 
 ## See our list of JDBC drivers below
 
-1. [Manorrock Guppy Environment Driver](guppy-environment/README.md)
-1. [Manorrock Guppy Property Driver](guppy-property/README.md)
+1. [Manorrock Guppy Environment Driver](environment/README.md)
+1. [Manorrock Guppy Property Driver](property/README.md)
 
 ## How do I contribute?
 
