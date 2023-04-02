@@ -124,6 +124,7 @@
     <modules>
         <module>environment</module>
         <module>property</module>
+        <module>csv</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
