@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
 import static java.util.logging.Level.FINE;
+import static java.util.logging.Level.WARNING;
 import java.util.logging.Logger;
 
 /**
@@ -65,7 +66,7 @@ public class PropertyDriver implements Driver {
         try {
             DriverManager.registerDriver(this);
         } catch (SQLException se) {
-
+            LOGGER.log(WARNING, "Error while registering PropertyDrver", se);
         }
     }
 
