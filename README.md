@@ -1,7 +1,6 @@
 # Manorrock Guppy Project
 
 [![build](https://github.com/manorrock/guppy/actions/workflows/build.yml/badge.svg)](https://github.com/manorrock/guppy/actions/workflows/build.yml)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=manorrock_guppy&metric=bugs)](https://sonarcloud.io/summary/new_code?id=manorrock_guppy)
 
 The Manorrock Guppy Project delivers you with a collection of JDBC drivers.
 
