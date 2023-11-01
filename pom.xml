@@ -18,6 +18,11 @@
             <url>https://github.com/manorrock/guppy/blob/master/LICENSE</url>
         </license>
     </licenses>
+    <properties>
+        <!-- other -->
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <build>
         <pluginManagement>
             <plugins>
@@ -54,7 +59,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <inherited>true</inherited>
                 <configuration>
-                    <release>17</release>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -126,9 +131,6 @@
         <module>property</module>
         <module>csv</module>
     </modules>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
     <profiles>
         <profile>
             <id>release</id>
