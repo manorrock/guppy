@@ -68,7 +68,7 @@ public class CSVDriver implements Driver {
 
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-        throw new UnsupportedOperationException();
+        return new DriverPropertyInfo[0];
     }
 
     @Override
