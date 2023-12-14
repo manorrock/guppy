@@ -58,7 +58,7 @@ public class CSVDriver implements Driver {
 
     @Override
     public Connection connect(String url, Properties info) throws SQLException {
-        throw new UnsupportedOperationException();
+        return new CSVConnection(url, info);
     }
 
     @Override
