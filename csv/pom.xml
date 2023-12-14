@@ -10,4 +10,11 @@
     <artifactId>csv</artifactId>
     <packaging>jar</packaging>
     <name>Manorrock Guppy - CSV Driver</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
