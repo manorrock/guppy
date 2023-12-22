@@ -27,8 +27,16 @@ package com.manorrock.guppy.csv;
 
 /**
  * The CSV-to-SQL utility.
- * 
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
 public class CSV2SQL {
+
+    /**
+     * Main.
+     *
+     * @param arguments the command-line arguments.
+     */
+    public static void main(String[] arguments) {
+    }
 }
