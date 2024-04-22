@@ -63,7 +63,7 @@ public class CSVConnection implements Connection {
 
     @Override
     public Statement createStatement() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new CSVStatement();
     }
 
     @Override
