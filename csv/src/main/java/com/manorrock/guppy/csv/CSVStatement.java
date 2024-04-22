@@ -40,7 +40,7 @@ public class CSVStatement implements Statement {
 
     @Override
     public ResultSet executeQuery(String sql) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new CSVResultSet();
     }
 
     @Override
