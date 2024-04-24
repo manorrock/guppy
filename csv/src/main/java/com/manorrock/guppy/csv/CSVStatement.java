@@ -40,7 +40,10 @@ public class CSVStatement implements Statement {
 
     @Override
     public ResultSet executeQuery(String sql) throws SQLException {
-        return new CSVResultSet();
+        if (sql.equals("SELECT * FROM CSV")) {
+            return new CSVResultSet();
+        }
+        throw new SQLException("Only 'SELECT * FROM CSV' is supported");
     }
 
     @Override
