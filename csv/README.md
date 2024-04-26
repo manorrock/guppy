@@ -2,3 +2,7 @@
 
 The Manorrock Guppy CSV module delivers you with JDBC driver that can be used to
 access CSV files using the JDBC API.
+
+## Limitation
+
+Currently the only SQL statement support is 'SELECT * FROM CSV'.
