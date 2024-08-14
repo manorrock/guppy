@@ -143,7 +143,6 @@
         </snapshotRepository>
     </distributionManagement>
     <modules>
-        <module>csv</module>
         <module>environment</module>
         <module>property</module>
     </modules>
